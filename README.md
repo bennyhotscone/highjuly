@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# High July
 
-## Getting Started
+Campaign site for **High July** — a creator-led culture brand. Built with Next.js, TypeScript, and Tailwind CSS. Vercel-ready.
 
-First, run the development server:
+## Pages
+
+- **/** — Home (hero, metrics, pillars, merch preview, FAQ, support)
+- **/merch** — Product grid
+- **/about** — Origin story
+- **/media-pack** — Press materials and brand assets
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Push to GitHub and import the repo in [Vercel](https://vercel.com). No extra configuration required.
 
-## Learn More
+## Stripe
 
-To learn more about Next.js, take a look at the following resources:
+Replace the placeholder `#` link on the homepage support section with your Stripe Payment Link URL when ready.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Age gate
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Visitors must confirm they are 18+ before entering. Verification is stored in `localStorage`. Use **Re-verify age** in the footer to test the gate again.
 
-## Deploy on Vercel
+## Background images
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Your photos live in `public/backgrounds/` (`bg-rooftop`, `bg-kitchen`, `bg-triptych-1` … `3`). To re-process uploads from the Cursor assets folder (e.g. split a new triptych):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+node scripts/process-backgrounds.mjs
+```
+
+Edit placement in `src/lib/data.ts` (`campaignBackgrounds`).
+
+## Compliance
+
+18+ only. Contributions are support/tips — not charitable donations and not tax deductible. Merch is apparel and campaign materials only; no controlled substances sold or shipped.

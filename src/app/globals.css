@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --hj-green: #163528;
+  --hj-green-deep: #0f2419;
+  --hj-cream: #f6f3ec;
+  --hj-cream-dark: #ebe6db;
+  --hj-ink: #121916;
+  --hj-ink-muted: #3d4843;
+  --hj-border: rgba(22, 53, 40, 0.12);
+  --hj-yellow: #d4e836;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-hj-green: var(--hj-green);
+  --color-hj-green-deep: var(--hj-green-deep);
+  --color-hj-cream: var(--hj-cream);
+  --color-hj-cream-dark: var(--hj-cream-dark);
+  --color-hj-ink: var(--hj-ink);
+  --color-hj-ink-muted: var(--hj-ink-muted);
+  --color-hj-border: var(--hj-border);
+  --color-hj-yellow: var(--hj-yellow);
+  --font-serif: var(--font-source-serif);
+  --font-body: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--hj-cream);
+  color: var(--hj-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection {
+  background-color: var(--hj-green);
+  color: var(--hj-cream);
 }
