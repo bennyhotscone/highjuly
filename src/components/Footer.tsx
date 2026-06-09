@@ -3,14 +3,15 @@
 import Link from "next/link";
 import { AGE_STORAGE_KEY } from "@/lib/age";
 import { Container } from "./Container";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
     <footer className="bg-hj-green-deep text-white">
       <Container wide className="flex flex-col gap-12 py-14 sm:flex-row sm:justify-between sm:py-16">
         <div>
-          <p className="font-serif text-2xl font-semibold">High July</p>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/70">
+          <Logo size="sm" className="rounded-lg bg-white/10 px-2 py-1" />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
             Creator-led culture campaign for the month of July.
           </p>
         </div>

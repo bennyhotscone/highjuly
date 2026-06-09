@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
+import { CampaignImage } from "@/components/CampaignImage";
 import { Container } from "@/components/Container";
 import { PageHeader } from "@/components/PageHeader";
-import { mediaPack } from "@/lib/data";
+import { brandLogos, mediaPack } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Media Pack",
@@ -40,6 +41,12 @@ function Block({
   );
 }
 
+const logoVariants = [
+  { key: "bong", label: "Bong mark", file: brandLogos.bong },
+  { key: "pill", label: "Pill mark", file: brandLogos.pill },
+  { key: "joint", label: "Joint mark", file: brandLogos.joint },
+] as const;
+
 export default function MediaPackPage() {
   return (
     <div className="bg-hj-cream">
@@ -73,10 +80,36 @@ export default function MediaPackPage() {
 
         <div className="py-10 sm:py-12">
           <p className="text-xs font-medium uppercase tracking-wider text-hj-ink-muted">
-            Logo
+            Logos
           </p>
-          <div className="mt-6 inline-flex items-center justify-center bg-hj-green px-12 py-10">
-            <span className="font-serif text-3xl font-semibold text-white">High July</span>
+          <p className="mt-3 max-w-2xl text-sm text-hj-ink-muted">
+            Three campaign marks — bong, pill, and joint. Use the bong lockup as the primary wordmark.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            {logoVariants.map((logo) => (
+              <div
+                key={logo.key}
+                className="flex flex-col items-center rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5"
+              >
+                <CampaignImage
+                  src={logo.file}
+                  alt={logo.label}
+                  width={320}
+                  height={200}
+                  className="h-auto w-full max-w-[280px] object-contain"
+                />
+                <p className="mt-4 text-sm font-semibold text-hj-ink">{logo.label}</p>
+                <a
+                  href={logo.file}
+                  download={`high-july-${logo.key}.png`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 text-xs font-medium text-hj-green hover:underline"
+                >
+                  Download PNG
+                </a>
+              </div>
+            ))}
           </div>
         </div>
 

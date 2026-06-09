@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { Container } from "./Container";
+import { Logo } from "./Logo";
 
 const links = [
   { href: "/about", label: "About" },
@@ -39,24 +40,10 @@ export function Navbar() {
       }`}
     >
       <Container wide className="flex h-16 items-center justify-between sm:h-[4.5rem]">
-        <Link href="/" className="group flex items-center gap-2">
-          <span
-            className={`flex h-9 w-9 items-center justify-center rounded-lg text-xs font-extrabold tracking-tight ${
-              onHero
-                ? "bg-hj-yellow text-hj-green"
-                : "bg-hj-green text-hj-yellow"
-            }`}
-          >
-            HJ
-          </span>
-          <span
-            className={`text-[1.05rem] font-extrabold leading-none tracking-[-0.02em] sm:text-lg ${
-              onHero ? "text-white" : "text-hj-ink"
-            }`}
-          >
-            High July
-          </span>
-        </Link>
+        <Logo
+          size="md"
+          className={onHero ? "rounded-lg bg-hj-cream/95 px-2 py-1 shadow-sm" : ""}
+        />
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (

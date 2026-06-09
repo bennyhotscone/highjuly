@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AGE_STORAGE_KEY, setAgeVerified } from "@/lib/age";
 import { AGE_GATE_NOTICE, siteImages } from "@/lib/data";
+import { Logo } from "./Logo";
 
 export function AgeGate({ children }: { children: React.ReactNode }) {
   const [verified, setVerified] = useState<boolean | null>(null);
@@ -49,8 +50,9 @@ export function AgeGate({ children }: { children: React.ReactNode }) {
           </div>
         ) : (
           <>
-            <p className="text-xs font-medium tracking-wide text-hj-ink-muted">18+ only</p>
-            <h1 className="mt-3 font-serif text-3xl font-semibold text-hj-ink">
+            <Logo size="sm" className="mx-auto w-fit" />
+            <p className="mt-6 text-center text-xs font-medium tracking-wide text-hj-ink-muted">18+ only</p>
+            <h1 className="mt-3 text-center text-2xl font-bold text-hj-ink">
               Confirm your age
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-hj-ink-muted">{AGE_GATE_NOTICE}</p>

@@ -16,6 +16,16 @@ export const storeImages = {
   hero: "/backgrounds/store-hero.jpg",
 } as const;
 
+export const brandLogos = {
+  primary: "/backgrounds/logo-primary.png",
+  bong: "/backgrounds/logo-bong.png",
+  pill: "/backgrounds/logo-pill.png",
+  joint: "/backgrounds/logo-joint.png",
+  icon: "/backgrounds/logo-icon.png",
+} as const;
+
+export type LogoVariant = keyof typeof brandLogos;
+
 export const campaignSteps = [
   {
     step: 1,
@@ -61,6 +71,7 @@ export const merchProducts = [
       "Heavyweight cotton tee with High July wordmark. Unisex fit. Available in core campaign colours.",
     status: "coming-soon" as const,
     image: "/backgrounds/product-official-tee.jpg",
+    logo: "joint" as const,
   },
   {
     id: "hoodie",
@@ -69,6 +80,7 @@ export const merchProducts = [
       "Mid-weight fleece hoodie with front logo. Relaxed fit for everyday wear.",
     status: "coming-soon" as const,
     image: "/backgrounds/product-hoodie.jpg",
+    logo: "bong" as const,
   },
   {
     id: "cap",
@@ -77,6 +89,7 @@ export const merchProducts = [
       "Structured six-panel cap with embroidered logo and adjustable strap.",
     status: "store" as const,
     image: "/backgrounds/product-cap.jpg",
+    logo: "pill" as const,
   },
   {
     id: "tote",
@@ -85,6 +98,7 @@ export const merchProducts = [
       "Canvas tote bag with screen-printed logo. Reinforced handles.",
     status: "coming-soon" as const,
     image: "/backgrounds/product-tote.jpg",
+    logo: "joint" as const,
   },
   {
     id: "mug",
@@ -93,6 +107,7 @@ export const merchProducts = [
       "Ceramic mug with High July branding. Dishwasher safe.",
     status: "coming-soon" as const,
     image: "/backgrounds/product-mug.jpg",
+    logo: "bong" as const,
   },
   {
     id: "poster",
@@ -101,6 +116,7 @@ export const merchProducts = [
       "Limited-run campaign poster. A2 size, suitable for framing.",
     status: "store" as const,
     image: "/backgrounds/product-poster.jpg",
+    logo: "pill" as const,
   },
 ] as const;
 

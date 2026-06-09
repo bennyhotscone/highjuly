@@ -84,10 +84,6 @@ const high1 = pick(files, /images_high1/i);
 const high2 = pick(files, /images_high_2/i);
 
 const products = [
-  // First thumbnail — left crop of rooftop photo (not the same frame as the cap)
-  ["product-official-tee.jpg", high1, { focusX: 0.22, focusY: 0.52, maxWidth: 819 }],
-  ["product-hoodie.jpg", high2, { focusX: 0.5, focusY: 0.42, maxWidth: 819 }],
-  // Last thumbnail — indoor kitchen scene instead of another rooftop
   ["product-cap.jpg", path.join(assetsDir, "bg-extra-kitchen.png"), { focusX: 0.62, focusY: 0.48 }],
   ["product-tote.jpg", path.join(assetsDir, "bg-extra-lounge.png"), { focusX: 0.38, focusY: 0.45 }],
   ["product-mug.jpg", path.join(assetsDir, "bg-extra-rooftop.png"), { focusX: 0.78, focusY: 0.42 }],

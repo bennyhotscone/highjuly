@@ -38,7 +38,37 @@ Your photos live in `public/backgrounds/` (`bg-rooftop`, `bg-kitchen`, `bg-tript
 node scripts/process-backgrounds.mjs
 ```
 
-Edit placement in `src/lib/data.ts` (`campaignBackgrounds`).
+Edit placement in `src/lib/data.ts` (`siteImages`).
+
+## Logos & merch photos
+
+Logo PNGs live alongside backgrounds in `public/backgrounds/` (`logo-bong.png`, `logo-pill.png`, etc.).
+
+```bash
+node scripts/process-products.mjs # cap, tote, mug, poster, store hero
+node scripts/process-logos.mjs    # slice logos + tee/hoodie apparel edits (run last)
+```
+
+## Sync to GitHub (work from another machine)
+
+From the project folder:
+
+```bash
+git status
+git add .
+git commit -m "Describe your changes"
+git push origin main
+```
+
+On your home PC in Cursor:
+
+1. Clone or open: `git clone https://github.com/bennyhotscone/highjuly.git`
+2. `npm install`
+3. `npm run dev` → http://localhost:3000
+
+Before each session: `git pull origin main`
+
+**Commit `public/backgrounds/`** so photos and logos work everywhere. The Cursor `assets/` folder is local-only — back up source files separately.
 
 ## Compliance
 
