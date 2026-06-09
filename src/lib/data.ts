@@ -24,6 +24,24 @@ export const brandLogos = {
   icon: "/backgrounds/logo-icon.png",
 } as const;
 
+/** Scalable SVG exports for press downloads */
+export const brandLogoSvgs = {
+  primary: "/backgrounds/logo-primary.svg",
+  bong: "/backgrounds/logo-bong.svg",
+  pill: "/backgrounds/logo-pill.svg",
+  joint: "/backgrounds/logo-joint.svg",
+  icon: "/backgrounds/logo-icon.svg",
+} as const;
+
+/** Raster exports for downloads and social previews */
+export const brandLogoDownloads = {
+  primary: "/backgrounds/logo-primary.png",
+  bong: "/backgrounds/logo-bong.png",
+  pill: "/backgrounds/logo-pill.png",
+  joint: "/backgrounds/logo-joint.png",
+  icon: "/backgrounds/logo-icon.png",
+} as const;
+
 export type LogoVariant = keyof typeof brandLogos;
 
 export const campaignSteps = [

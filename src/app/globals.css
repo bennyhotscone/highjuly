@@ -43,6 +43,15 @@ body {
   color: var(--hj-ink);
 }
 
+@layer base {
+  /* Tailwind preflight sets max-width:100% on img, which clips wide logos inside narrow parents */
+  .hj-logo {
+    max-width: none;
+    width: auto;
+    height: auto;
+  }
+}
+
 @layer components {
   .hj-card {
     @apply overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(15,22,18,0.08)] ring-1 ring-black/5;

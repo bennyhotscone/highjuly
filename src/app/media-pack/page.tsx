@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
-import { CampaignImage } from "@/components/CampaignImage";
 import { Container } from "@/components/Container";
 import { PageHeader } from "@/components/PageHeader";
-import { brandLogos, mediaPack } from "@/lib/data";
+import { brandLogoDownloads, brandLogoSvgs, brandLogos, mediaPack } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Media Pack",
@@ -42,9 +41,9 @@ function Block({
 }
 
 const logoVariants = [
-  { key: "bong", label: "Bong mark", file: brandLogos.bong },
-  { key: "pill", label: "Pill mark", file: brandLogos.pill },
-  { key: "joint", label: "Joint mark", file: brandLogos.joint },
+  { key: "bong", label: "Bong mark" },
+  { key: "pill", label: "Pill mark" },
+  { key: "joint", label: "Joint mark" },
 ] as const;
 
 export default function MediaPackPage() {
@@ -91,23 +90,30 @@ export default function MediaPackPage() {
                 key={logo.key}
                 className="flex flex-col items-center rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5"
               >
-                <CampaignImage
-                  src={logo.file}
-                  alt={logo.label}
-                  width={320}
-                  height={200}
-                  className="h-auto w-full max-w-[280px] object-contain"
-                />
+                <div className="relative mx-auto h-28 w-full max-w-[20rem] sm:h-32 sm:max-w-[22rem]">
+                  <img
+                    src={brandLogos[logo.key]}
+                    alt={logo.label}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
                 <p className="mt-4 text-sm font-semibold text-hj-ink">{logo.label}</p>
-                <a
-                  href={logo.file}
-                  download={`high-july-${logo.key}.png`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 text-xs font-medium text-hj-green hover:underline"
-                >
-                  Download PNG
-                </a>
+                <div className="mt-2 flex gap-4 text-xs font-medium text-hj-green">
+                  <a
+                    href={brandLogoSvgs[logo.key]}
+                    download={`high-july-${logo.key}.svg`}
+                    className="hover:underline"
+                  >
+                    Download SVG
+                  </a>
+                  <a
+                    href={brandLogoDownloads[logo.key]}
+                    download={`high-july-${logo.key}.png`}
+                    className="hover:underline"
+                  >
+                    Download PNG
+                  </a>
+                </div>
               </div>
             ))}
           </div>

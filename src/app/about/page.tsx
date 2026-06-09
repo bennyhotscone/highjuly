@@ -19,7 +19,7 @@ export default function AboutPage() {
         description="A founder-led campaign and brand with a single annual focus: July."
       />
 
-      <FullBleedImage src={siteImages.aboutBanner} aspect="cinematic" />
+      <FullBleedImage src={siteImages.aboutBanner} aspect="cinematic" objectPosition="50% 22%" />
 
       <Container className="py-20 sm:py-28">
         <article className="mx-auto max-w-3xl">

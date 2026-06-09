@@ -50,7 +50,7 @@ export function AgeGate({ children }: { children: React.ReactNode }) {
           </div>
         ) : (
           <>
-            <Logo size="sm" className="mx-auto w-fit" />
+            <Logo size="md" className="mx-auto" />
             <p className="mt-6 text-center text-xs font-medium tracking-wide text-hj-ink-muted">18+ only</p>
             <h1 className="mt-3 text-center text-2xl font-bold text-hj-ink">
               Confirm your age

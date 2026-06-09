@@ -1,6 +1,8 @@
 import sharp from "sharp";
+import { execFile } from "node:child_process";
 import { mkdir, readFile } from "fs/promises";
 import path from "path";
+import { promisify } from "node:util";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -33,12 +35,23 @@ await sharp(buf)
   .png()
   .toFile(path.join(outDir, "logo-icon.png"));
 
-await sharp(path.join(outDir, "logo-bong.png"))
-  .resize({ width: 420, withoutEnlargement: true })
+const bongLockup = { left: 16, top: 160, width: 496, height: 319 };
+
+await sharp(buf)
+  .extract(bongLockup)
+  .png()
+  .toFile(path.join(outDir, "logo-bong.png"));
+
+await sharp(buf)
+  .extract(bongLockup)
   .png()
   .toFile(path.join(outDir, "logo-primary.png"));
 
 console.log("logos written to public/backgrounds/");
+
+await promisify(execFile)("node", [path.join(__dirname, "trace-logos.mjs")], {
+  cwd: root,
+});
 
 async function exportProductJpg(input, output, focusX = 0.5, focusY = 0.45) {
   const image = sharp(await readFile(input));

@@ -84,7 +84,7 @@ const high1 = pick(files, /images_high1/i);
 const high2 = pick(files, /images_high_2/i);
 
 const products = [
-  ["product-cap.jpg", path.join(assetsDir, "bg-extra-kitchen.png"), { focusX: 0.62, focusY: 0.48 }],
+  ["product-cap.jpg", path.join(outDir, "bg-extra-kitchen.jpg"), { focusX: 0.62, focusY: 0.48 }],
   ["product-tote.jpg", path.join(assetsDir, "bg-extra-lounge.png"), { focusX: 0.38, focusY: 0.45 }],
   ["product-mug.jpg", path.join(assetsDir, "bg-extra-rooftop.png"), { focusX: 0.78, focusY: 0.42 }],
   ["product-poster.jpg", path.join(assetsDir, "bg-extra-rolling.png"), { focusX: 0.5, focusY: 0.72 }],

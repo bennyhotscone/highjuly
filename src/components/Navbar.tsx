@@ -33,17 +33,22 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full overflow-visible transition-all duration-300 ${
         solid
           ? "border-b border-hj-border bg-white/95 shadow-md backdrop-blur-lg"
           : "bg-gradient-to-b from-black/60 to-transparent"
       }`}
     >
       <Container wide className="flex h-16 items-center justify-between sm:h-[4.5rem]">
-        <Logo
-          size="md"
-          className={onHero ? "rounded-lg bg-hj-cream/95 px-2 py-1 shadow-sm" : ""}
-        />
+        <div className="shrink-0">
+          {onHero ? (
+            <div className="w-fit overflow-visible rounded-lg bg-hj-cream p-1.5 shadow-sm">
+              <Logo size="lg" />
+            </div>
+          ) : (
+            <Logo size="lg" />
+          )}
+        </div>
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (

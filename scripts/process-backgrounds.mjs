@@ -1,6 +1,8 @@
 import sharp from "sharp";
+import { execFile } from "node:child_process";
 import { mkdir, readdir, readFile } from "fs/promises";
 import path from "path";
+import { promisify } from "node:util";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -76,3 +78,7 @@ for (const [src, dest] of extraExports) {
     console.warn("skip missing", src);
   }
 }
+
+await promisify(execFile)("node", [path.join(__dirname, "apply-photo-edits.mjs")], {
+  cwd: root,
+});

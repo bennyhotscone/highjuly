@@ -33,7 +33,7 @@ export default function HomePage() {
               2026 campaign
             </p>
             <h1 className="mt-4 text-[clamp(2.75rem,7.5vw,4.75rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-white">
-              Get high
+              Get <span className="uppercase">high</span>
               <span className="block text-hj-yellow">this July</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">

@@ -4,10 +4,12 @@ export function FullBleedImage({
   src,
   aspect = "cinematic",
   priority = false,
+  objectPosition = "center",
 }: {
   src: string;
   aspect?: "cinematic" | "tall" | "square";
   priority?: boolean;
+  objectPosition?: string;
 }) {
   const aspectClass =
     aspect === "tall"
@@ -23,6 +25,7 @@ export function FullBleedImage({
         alt=""
         fill
         className="object-cover"
+        style={{ objectPosition }}
         sizes="100vw"
         quality={90}
         priority={priority}

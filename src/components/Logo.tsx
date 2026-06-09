@@ -1,11 +1,10 @@
-import { CampaignImage } from "@/components/CampaignImage";
 import Link from "next/link";
 import { brandLogos, type LogoVariant } from "@/lib/data";
 
-const heights: Record<"sm" | "md" | "lg", string> = {
-  sm: "h-8",
-  md: "h-10 sm:h-11",
-  lg: "h-14 sm:h-16",
+const heightsPx: Record<"sm" | "md" | "lg", number> = {
+  sm: 44,
+  md: 52,
+  lg: 80,
 };
 
 export function Logo({
@@ -19,17 +18,20 @@ export function Logo({
   className?: string;
   size?: "sm" | "md" | "lg";
 }) {
-  const src = brandLogos[variant];
+  const h = heightsPx[size];
 
   return (
-    <Link href={href} className={`relative block shrink-0 ${heights[size]} ${className}`}>
-      <CampaignImage
-        src={src}
+    <Link
+      href={href}
+      aria-label="High July home"
+      className={`block w-fit shrink-0 overflow-visible ${className}`}
+      style={{ lineHeight: 0 }}
+    >
+      <img
+        src={`${brandLogos[variant]}?v=11`}
         alt="High July"
-        width={420}
-        height={120}
-        className="h-full w-auto object-contain object-left"
-        priority
+        className="hj-logo block w-auto max-w-none"
+        style={{ height: h }}
       />
     </Link>
   );
@@ -43,11 +45,9 @@ export function LogoMark({
   className?: string;
 }) {
   return (
-    <CampaignImage
+    <img
       src={brandLogos[variant === "icon" ? "icon" : variant]}
       alt=""
-      width={512}
-      height={512}
       className={`rounded-full object-cover ${className}`}
     />
   );
