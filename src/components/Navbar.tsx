@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Button } from "./Button";
 import { Container } from "./Container";
 
 const links = [
-  { href: "/merch", label: "Merch" },
   { href: "/about", label: "About" },
-  { href: "/media-pack", label: "Media pack" },
+  { href: "/media-pack", label: "Media" },
 ];
 
 export function Navbar() {
@@ -22,67 +22,83 @@ export function Navbar() {
       setSolid(true);
       return;
     }
-    const onScroll = () => setSolid(window.scrollY > 80);
+    const onScroll = () => setSolid(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
 
-  const lightOnHero = isHome && !solid;
+  const onHero = isHome && !solid;
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         solid
-          ? "border-b border-hj-border bg-hj-cream/95 shadow-sm shadow-hj-ink/5 backdrop-blur-md"
-          : "bg-gradient-to-b from-black/50 to-transparent"
+          ? "border-b border-hj-border bg-white/95 shadow-md backdrop-blur-lg"
+          : "bg-gradient-to-b from-black/60 to-transparent"
       }`}
     >
-      <Container wide className="flex h-[4.25rem] items-center justify-between sm:h-[5rem]">
-        <Link
-          href="/"
-          className={`font-serif text-xl font-semibold tracking-tight sm:text-[1.35rem] ${
-            lightOnHero ? "text-white" : "text-hj-ink"
-          }`}
-        >
-          High July
+      <Container wide className="flex h-16 items-center justify-between sm:h-[4.5rem]">
+        <Link href="/" className="group flex items-center gap-2">
+          <span
+            className={`flex h-9 w-9 items-center justify-center rounded-lg text-xs font-extrabold tracking-tight ${
+              onHero
+                ? "bg-hj-yellow text-hj-green"
+                : "bg-hj-green text-hj-yellow"
+            }`}
+          >
+            HJ
+          </span>
+          <span
+            className={`text-[1.05rem] font-extrabold leading-none tracking-[-0.02em] sm:text-lg ${
+              onHero ? "text-white" : "text-hj-ink"
+            }`}
+          >
+            High July
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-10 md:flex">
+        <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-[15px] transition-colors ${
-                lightOnHero
+              className={`text-sm font-medium transition-colors ${
+                onHero
                   ? "text-white/90 hover:text-white"
                   : pathname === link.href
-                    ? "font-medium text-hj-green"
+                    ? "text-hj-green"
                     : "text-hj-ink-muted hover:text-hj-ink"
               }`}
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/#support"
-            className={`rounded-sm px-5 py-2.5 text-[15px] font-medium transition-colors ${
-              lightOnHero
-                ? "bg-white text-hj-ink hover:bg-hj-cream"
-                : "bg-hj-green text-white hover:bg-hj-green-deep"
-            }`}
-          >
-            Support
-          </Link>
+          <div className="flex items-center gap-3">
+            <Button
+              href="/#signup"
+              variant={onHero ? "yellow" : "yellow"}
+              size="sm"
+            >
+              Sign up
+            </Button>
+            <Button
+              href="/merch"
+              variant={onHero ? "outline-light" : "outline"}
+              size="sm"
+            >
+              Store
+            </Button>
+          </div>
         </nav>
 
         <button
           type="button"
-          className={`md:hidden ${lightOnHero ? "text-white" : "text-hj-ink"}`}
+          className={`rounded-lg p-2 md:hidden ${onHero ? "text-white" : "text-hj-ink"}`}
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             {open ? (
               <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -93,24 +109,25 @@ export function Navbar() {
       </Container>
 
       {open && (
-        <div className="border-t border-hj-border bg-hj-cream px-6 py-6 md:hidden">
+        <div className="border-t border-hj-border bg-white px-6 py-5 shadow-lg md:hidden">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-lg text-hj-ink"
+              className="block py-3 font-medium text-hj-ink"
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/#support"
-            onClick={() => setOpen(false)}
-            className="mt-4 inline-block rounded-sm bg-hj-green px-5 py-3 text-white"
-          >
-            Support
-          </Link>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <Button href="/#signup" variant="yellow" size="md" fullWidth>
+              Sign up
+            </Button>
+            <Button href="/merch" variant="outline" size="md" fullWidth>
+              Store
+            </Button>
+          </div>
         </div>
       )}
     </header>

@@ -8,15 +8,11 @@ export function PageHeader({
   description?: string;
 }) {
   return (
-    <header className="border-b border-hj-border bg-hj-cream pt-[5rem] sm:pt-[5.5rem]">
-      <Container className="py-14 sm:py-20">
-        <h1 className="font-serif text-5xl font-semibold tracking-tight text-hj-ink sm:text-6xl">
-          {title}
-        </h1>
+    <header className="border-b border-hj-border bg-white pt-20 shadow-sm sm:pt-24">
+      <Container className="py-12 sm:py-16">
+        <h1 className="text-4xl font-bold tracking-tight text-hj-ink sm:text-5xl">{title}</h1>
         {description && (
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-hj-ink/85">
-            {description}
-          </p>
+          <p className="mt-4 max-w-2xl text-lg text-hj-ink-muted">{description}</p>
         )}
       </Container>
     </header>

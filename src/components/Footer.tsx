@@ -15,10 +15,10 @@ export function Footer() {
           </p>
         </div>
         <div className="flex flex-wrap gap-x-12 gap-y-4 text-sm text-white/80">
-          <Link href="/merch" className="hover:text-white">Merch</Link>
+          <Link href="/#signup" className="hover:text-white">Sign up</Link>
+          <Link href="/merch" className="hover:text-white">Store</Link>
           <Link href="/about" className="hover:text-white">About</Link>
           <Link href="/media-pack" className="hover:text-white">Media pack</Link>
-          <Link href="/#support" className="hover:text-white">Support</Link>
           <button
             type="button"
             onClick={() => {

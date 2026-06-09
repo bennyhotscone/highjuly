@@ -4,35 +4,53 @@ export const AGE_GATE_NOTICE =
 /** Campaign photography — run `node scripts/process-backgrounds.mjs` to rebuild from assets */
 export const siteImages = {
   hero: "/backgrounds/bg-rooftop.jpg",
-  mission: "/backgrounds/bg-triptych-2.jpg",
-  bandRolling: "/backgrounds/bg-triptych-1.jpg",
+  mission: "/backgrounds/bg-kitchen.jpg",
+  bandRolling: "/backgrounds/bg-extra-rolling.jpg",
   bandLounge: "/backgrounds/bg-extra-lounge.jpg",
   support: "/backgrounds/bg-kitchen.jpg",
-  bandRooftop: "/backgrounds/bg-extra-rooftop.jpg",
+  aboutBanner: "/backgrounds/bg-extra-kitchen.jpg",
   about: "/backgrounds/bg-triptych-3.jpg",
 } as const;
 
-export const campaignStats = [
+export const storeImages = {
+  hero: "/backgrounds/store-hero.jpg",
+} as const;
+
+export const campaignSteps = [
   {
-    value: "31",
-    label: "days in the annual campaign window",
+    step: 1,
+    title: "Sign up",
+    description: "Join the campaign list for July updates, drops, and supporter links.",
   },
   {
-    value: "2026",
-    label: "campaign season",
+    step: 2,
+    title: "Support or shop",
+    description: "Contribute directly to the project or buy official merch from the store.",
   },
   {
-    value: "6",
-    label: "official products",
+    step: 3,
+    title: "Follow through July",
+    description: "Campaign content, new releases, and community activity run all month.",
   },
   {
-    value: "18+",
-    label: "age requirement for site access",
+    step: 4,
+    title: "Fund the work",
+    description: "Your support and store purchases keep the campaign running.",
   },
-  {
-    value: "1",
-    label: "founder-led operation",
-  },
+] as const;
+
+export const supporterBenefits = [
+  "Campaign updates through July",
+  "Early merch drop notifications",
+  "Direct supporter contribution option",
+  "Access to official campaign materials",
+] as const;
+
+export const storeBenefits = [
+  "Official High July apparel",
+  "Limited campaign goods",
+  "New drops through the season",
+  "Ships from the campaign store",
 ] as const;
 
 export const merchProducts = [
@@ -42,7 +60,7 @@ export const merchProducts = [
     description:
       "Heavyweight cotton tee with High July wordmark. Unisex fit. Available in core campaign colours.",
     status: "coming-soon" as const,
-    image: "/backgrounds/bg-triptych-1.jpg",
+    image: "/backgrounds/product-official-tee.jpg",
   },
   {
     id: "hoodie",
@@ -50,7 +68,7 @@ export const merchProducts = [
     description:
       "Mid-weight fleece hoodie with front logo. Relaxed fit for everyday wear.",
     status: "coming-soon" as const,
-    image: "/backgrounds/bg-extra-lounge.jpg",
+    image: "/backgrounds/product-hoodie.jpg",
   },
   {
     id: "cap",
@@ -58,7 +76,7 @@ export const merchProducts = [
     description:
       "Structured six-panel cap with embroidered logo and adjustable strap.",
     status: "store" as const,
-    image: "/backgrounds/bg-extra-rooftop.jpg",
+    image: "/backgrounds/product-cap.jpg",
   },
   {
     id: "tote",
@@ -66,7 +84,7 @@ export const merchProducts = [
     description:
       "Canvas tote bag with screen-printed logo. Reinforced handles.",
     status: "coming-soon" as const,
-    image: "/backgrounds/bg-kitchen.jpg",
+    image: "/backgrounds/product-tote.jpg",
   },
   {
     id: "mug",
@@ -74,7 +92,7 @@ export const merchProducts = [
     description:
       "Ceramic mug with High July branding. Dishwasher safe.",
     status: "coming-soon" as const,
-    image: "/backgrounds/bg-extra-kitchen.jpg",
+    image: "/backgrounds/product-mug.jpg",
   },
   {
     id: "poster",
@@ -82,7 +100,7 @@ export const merchProducts = [
     description:
       "Limited-run campaign poster. A2 size, suitable for framing.",
     status: "store" as const,
-    image: "/backgrounds/bg-extra-rolling.jpg",
+    image: "/backgrounds/product-poster.jpg",
   },
 ] as const;
 

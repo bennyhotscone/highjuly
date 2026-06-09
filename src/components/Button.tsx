@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "text";
-type ButtonSize = "sm" | "md" | "lg";
+type ButtonVariant = "primary" | "secondary" | "yellow" | "outline" | "outline-light" | "ghost";
+type ButtonSize = "sm" | "md" | "lg" | "xl";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -12,22 +12,28 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit";
   external?: boolean;
+  fullWidth?: boolean;
 }
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-hj-green text-white hover:bg-hj-green-deep",
+    "bg-hj-green text-white shadow-[0_4px_14px_rgba(22,53,40,0.35)] hover:bg-hj-green-light hover:shadow-[0_6px_20px_rgba(22,53,40,0.4)] active:scale-[0.98]",
   secondary:
-    "bg-hj-ink text-white hover:bg-hj-green-deep",
+    "bg-hj-ink text-white shadow-[0_4px_14px_rgba(15,22,18,0.25)] hover:bg-hj-green-deep active:scale-[0.98]",
+  yellow:
+    "bg-hj-yellow text-hj-green shadow-[0_4px_14px_rgba(228,255,61,0.35)] hover:bg-hj-yellow-hover active:scale-[0.98]",
   outline:
-    "border border-hj-ink/20 bg-transparent text-hj-ink hover:border-hj-green hover:text-hj-green",
-  text: "text-hj-green underline-offset-4 hover:underline p-0",
+    "border-2 border-hj-green bg-white text-hj-green shadow-sm hover:bg-hj-green hover:text-white active:scale-[0.98]",
+  "outline-light":
+    "border-2 border-white/90 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-hj-ink active:scale-[0.98]",
+  ghost: "text-hj-green hover:bg-hj-green/5",
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-[15px]",
-  lg: "px-8 py-3.5 text-base",
+  sm: "min-h-10 px-4 py-2 text-sm",
+  md: "min-h-11 px-6 py-2.5 text-sm",
+  lg: "min-h-12 px-8 py-3 text-base",
+  xl: "min-h-14 px-10 py-4 text-base sm:text-lg",
 };
 
 export function Button({
@@ -39,13 +45,12 @@ export function Button({
   onClick,
   type = "button",
   external = false,
+  fullWidth = false,
 }: ButtonProps) {
   const base =
-    variant === "text"
-      ? "inline-flex items-center gap-2 font-medium transition-colors"
-      : "inline-flex items-center justify-center rounded-sm font-medium transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hj-green";
+    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hj-green";
 
-  const combined = `${base} ${variants[variant]} ${variant !== "text" ? sizes[size] : ""} ${className}`;
+  const combined = `${base} ${variants[variant]} ${sizes[size]} ${fullWidth ? "w-full" : ""} ${className}`;
 
   if (href) {
     if (external) {

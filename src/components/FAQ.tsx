@@ -7,34 +7,37 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <dl className="divide-y divide-hj-border">
+    <div className="space-y-3">
       {faqItems.map((item, i) => {
         const isOpen = open === i;
         return (
-          <div key={item.question} className="py-6 sm:py-8">
-            <dt>
-              <button
-                type="button"
-                className="flex w-full items-start justify-between gap-8 text-left"
-                onClick={() => setOpen(isOpen ? null : i)}
-                aria-expanded={isOpen}
+          <div
+            key={item.question}
+            className={`hj-card transition-shadow ${isOpen ? "shadow-[0_12px_40px_rgba(15,22,18,0.1)]" : ""}`}
+          >
+            <button
+              type="button"
+              className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6"
+              onClick={() => setOpen(isOpen ? null : i)}
+              aria-expanded={isOpen}
+            >
+              <span className="text-base font-bold text-hj-ink sm:text-lg">{item.question}</span>
+              <span
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-hj-cream text-lg font-bold text-hj-green transition-transform ${
+                  isOpen ? "rotate-45" : ""
+                }`}
               >
-                <span className="font-serif text-xl font-semibold text-hj-ink sm:text-2xl">
-                  {item.question}
-                </span>
-                <span className="mt-1 shrink-0 text-2xl font-light text-hj-ink-muted">
-                  {isOpen ? "−" : "+"}
-                </span>
-              </button>
-            </dt>
+                +
+              </span>
+            </button>
             {isOpen && (
-              <dd className="mt-4 max-w-2xl text-base leading-relaxed text-hj-ink/85">
+              <p className="border-t border-hj-border px-5 pb-5 pt-4 text-sm leading-relaxed text-hj-ink-muted sm:px-6 sm:text-base">
                 {item.answer}
-              </dd>
+              </p>
             )}
           </div>
         );
       })}
-    </dl>
+    </div>
   );
 }

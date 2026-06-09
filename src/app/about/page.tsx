@@ -19,11 +19,11 @@ export default function AboutPage() {
         description="A founder-led campaign and brand with a single annual focus: July."
       />
 
-      <FullBleedImage src={siteImages.hero} aspect="cinematic" />
+      <FullBleedImage src={siteImages.aboutBanner} aspect="cinematic" />
 
       <Container className="py-20 sm:py-28">
         <article className="mx-auto max-w-3xl">
-          <p className="font-serif text-2xl font-semibold leading-snug text-hj-ink sm:text-3xl">
+          <p className="text-2xl font-bold leading-snug text-hj-ink sm:text-3xl">
             High July was built to run a dedicated culture campaign through the
             month of July each year.
           </p>

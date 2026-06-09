@@ -2,17 +2,20 @@
 
 :root {
   --hj-green: #163528;
-  --hj-green-deep: #0f2419;
-  --hj-cream: #f6f3ec;
-  --hj-cream-dark: #ebe6db;
-  --hj-ink: #121916;
-  --hj-ink-muted: #3d4843;
-  --hj-border: rgba(22, 53, 40, 0.12);
-  --hj-yellow: #d4e836;
+  --hj-green-light: #1f4d3a;
+  --hj-green-deep: #0a1812;
+  --hj-cream: #f4f1ea;
+  --hj-cream-dark: #e8e4da;
+  --hj-ink: #0f1612;
+  --hj-ink-muted: #4a5550;
+  --hj-border: rgba(15, 22, 18, 0.1);
+  --hj-yellow: #e4ff3d;
+  --hj-yellow-hover: #f0ff70;
 }
 
 @theme inline {
   --color-hj-green: var(--hj-green);
+  --color-hj-green-light: var(--hj-green-light);
   --color-hj-green-deep: var(--hj-green-deep);
   --color-hj-cream: var(--hj-cream);
   --color-hj-cream-dark: var(--hj-cream-dark);
@@ -20,6 +23,7 @@
   --color-hj-ink-muted: var(--hj-ink-muted);
   --color-hj-border: var(--hj-border);
   --color-hj-yellow: var(--hj-yellow);
+  --color-hj-yellow-hover: var(--hj-yellow-hover);
   --font-serif: var(--font-source-serif);
   --font-body: var(--font-inter);
 }
@@ -35,6 +39,20 @@ body {
 }
 
 ::selection {
-  background-color: var(--hj-green);
-  color: var(--hj-cream);
+  background-color: var(--hj-yellow);
+  color: var(--hj-ink);
+}
+
+@layer components {
+  .hj-card {
+    @apply overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(15,22,18,0.08)] ring-1 ring-black/5;
+  }
+
+  .hj-section-title {
+    @apply text-3xl font-bold tracking-tight text-hj-ink sm:text-4xl;
+  }
+
+  .hj-label {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-hj-green;
+  }
 }
