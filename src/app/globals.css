@@ -24,7 +24,7 @@
   --color-hj-border: var(--hj-border);
   --color-hj-yellow: var(--hj-yellow);
   --color-hj-yellow-hover: var(--hj-yellow-hover);
-  --font-serif: var(--font-source-serif);
+  --font-serif: var(--font-inter);
   --font-body: var(--font-inter);
 }
 
@@ -44,11 +44,8 @@ body {
 }
 
 @layer base {
-  /* Tailwind preflight sets max-width:100% on img, which clips wide logos inside narrow parents */
   .hj-logo {
     max-width: none;
-    width: auto;
-    height: auto;
   }
 }
 

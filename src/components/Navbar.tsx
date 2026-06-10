@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { Container } from "./Container";
-import { Logo } from "./Logo";
 
 const links = [
   { href: "/about", label: "About" },
@@ -33,22 +32,21 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full overflow-visible transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         solid
-          ? "border-b border-hj-border bg-white/95 shadow-md backdrop-blur-lg"
+          ? "border-b border-hj-border bg-white shadow-md"
           : "bg-gradient-to-b from-black/60 to-transparent"
       }`}
     >
-      <Container wide className="flex h-16 items-center justify-between sm:h-[4.5rem]">
-        <div className="shrink-0">
-          {onHero ? (
-            <div className="w-fit overflow-visible rounded-lg bg-hj-cream p-1.5 shadow-sm">
-              <Logo size="lg" />
-            </div>
-          ) : (
-            <Logo size="lg" />
-          )}
-        </div>
+      <Container wide className="flex h-16 items-center justify-between">
+        <Link
+          href="/"
+          className={`font-black uppercase tracking-tight transition-colors ${
+            onHero ? "text-white hover:text-white/90" : "text-hj-green hover:text-hj-green-light"
+          }`}
+        >
+          High July
+        </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
@@ -67,11 +65,7 @@ export function Navbar() {
             </Link>
           ))}
           <div className="flex items-center gap-3">
-            <Button
-              href="/#signup"
-              variant={onHero ? "yellow" : "yellow"}
-              size="sm"
-            >
+            <Button href="/#signup" variant="yellow" size="sm">
               Sign up
             </Button>
             <Button

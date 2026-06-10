@@ -36,6 +36,17 @@ const sizes: Record<ButtonSize, string> = {
   xl: "min-h-14 px-10 py-4 text-base sm:text-lg",
 };
 
+const buttonBase =
+  "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hj-green";
+
+function buttonClassName(
+  variant: ButtonVariant = "primary",
+  size: ButtonSize = "md",
+  className = "",
+) {
+  return `${buttonBase} ${variants[variant]} ${sizes[size]} ${className}`.trim();
+}
+
 export function Button({
   children,
   href,
@@ -47,10 +58,7 @@ export function Button({
   external = false,
   fullWidth = false,
 }: ButtonProps) {
-  const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hj-green";
-
-  const combined = `${base} ${variants[variant]} ${sizes[size]} ${fullWidth ? "w-full" : ""} ${className}`;
+  const combined = `${buttonClassName(variant, size)} ${fullWidth ? "w-full" : ""} ${className}`.trim();
 
   if (href) {
     if (external) {

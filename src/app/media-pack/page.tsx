@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { PageHeader } from "@/components/PageHeader";
-import { brandLogoDownloads, brandLogoSvgs, brandLogos, mediaPack } from "@/lib/data";
+import { brandLogoDownloads, brandLogos, mediaPack } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Media Pack",
@@ -41,9 +41,16 @@ function Block({
 }
 
 const logoVariants = [
-  { key: "bong", label: "Bong mark" },
-  { key: "pill", label: "Pill mark" },
-  { key: "joint", label: "Joint mark" },
+  { key: "primary", label: "Primary mark" },
+  { key: "bong", label: "Bong" },
+  { key: "pipe", label: "Pipe" },
+  { key: "joint", label: "Joint" },
+  { key: "blunt", label: "Blunt" },
+  { key: "mushroom", label: "Mushroom" },
+  { key: "munchies", label: "Munchies" },
+  { key: "pineapple", label: "Pineapple" },
+  { key: "pizza", label: "Pizza" },
+  { key: "sleep", label: "Sleep" },
 ] as const;
 
 export default function MediaPackPage() {
@@ -82,38 +89,33 @@ export default function MediaPackPage() {
             Logos
           </p>
           <p className="mt-3 max-w-2xl text-sm text-hj-ink-muted">
-            Three campaign marks — bong, pill, and joint. Use the bong lockup as the primary wordmark.
+            Primary gold mark plus nine campaign variants. Use the primary lockup in headers and press.
           </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {logoVariants.map((logo) => (
               <div
                 key={logo.key}
                 className="flex flex-col items-center rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5"
               >
-                <div className="relative mx-auto h-28 w-full max-w-[20rem] sm:h-32 sm:max-w-[22rem]">
+                <div
+                  className={`relative mx-auto flex h-36 w-full items-center justify-center rounded-xl p-4 ${
+                    logo.key === "primary" ? "bg-hj-green" : "bg-black"
+                  }`}
+                >
                   <img
                     src={brandLogos[logo.key]}
                     alt={logo.label}
-                    className="h-full w-full object-contain"
+                    className="max-h-full max-w-full object-contain"
                   />
                 </div>
                 <p className="mt-4 text-sm font-semibold text-hj-ink">{logo.label}</p>
-                <div className="mt-2 flex gap-4 text-xs font-medium text-hj-green">
-                  <a
-                    href={brandLogoSvgs[logo.key]}
-                    download={`high-july-${logo.key}.svg`}
-                    className="hover:underline"
-                  >
-                    Download SVG
-                  </a>
-                  <a
-                    href={brandLogoDownloads[logo.key]}
-                    download={`high-july-${logo.key}.png`}
-                    className="hover:underline"
-                  >
-                    Download PNG
-                  </a>
-                </div>
+                <a
+                  href={brandLogoDownloads[logo.key] ?? brandLogos[logo.key]}
+                  download={`high-july-${logo.key}.png`}
+                  className="mt-2 text-xs font-medium text-hj-green hover:underline"
+                >
+                  Download PNG
+                </a>
               </div>
             ))}
           </div>

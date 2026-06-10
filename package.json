@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "trace-logos": "node scripts/trace-logos.mjs",
     "photo-edits": "node scripts/apply-photo-edits.mjs"
   },
   "dependencies": {
@@ -22,7 +21,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
-    "imagetracerjs": "^1.2.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

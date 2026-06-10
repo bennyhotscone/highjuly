@@ -10,9 +10,7 @@ export function Footer() {
     <footer className="bg-hj-green-deep text-white">
       <Container wide className="flex flex-col gap-12 py-14 sm:flex-row sm:justify-between sm:py-16">
         <div>
-          <div className="rounded-lg bg-hj-cream p-1.5">
-            <Logo size="sm" />
-          </div>
+          <Logo height={44} />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
             Creator-led culture campaign for the month of July.
           </p>

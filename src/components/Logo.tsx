@@ -1,54 +1,25 @@
 import Link from "next/link";
 import { brandLogos, type LogoVariant } from "@/lib/data";
 
-const heightsPx: Record<"sm" | "md" | "lg", number> = {
-  sm: 44,
-  md: 52,
-  lg: 80,
-};
-
 export function Logo({
   variant = "primary",
   href = "/",
   className = "",
-  size = "md",
+  height = 48,
 }: {
   variant?: LogoVariant;
   href?: string;
   className?: string;
-  size?: "sm" | "md" | "lg";
+  height?: number;
 }) {
-  const h = heightsPx[size];
-
   return (
-    <Link
-      href={href}
-      aria-label="High July home"
-      className={`block w-fit shrink-0 overflow-visible ${className}`}
-      style={{ lineHeight: 0 }}
-    >
+    <Link href={href} aria-label="High July home" className={`inline-flex items-center ${className}`}>
       <img
-        src={`${brandLogos[variant]}?v=11`}
+        src={brandLogos[variant]}
         alt="High July"
         className="hj-logo block w-auto max-w-none"
-        style={{ height: h }}
+        style={{ height }}
       />
     </Link>
-  );
-}
-
-export function LogoMark({
-  variant = "icon",
-  className = "",
-}: {
-  variant?: Extract<LogoVariant, "icon" | "bong" | "pill" | "joint">;
-  className?: string;
-}) {
-  return (
-    <img
-      src={brandLogos[variant === "icon" ? "icon" : variant]}
-      alt=""
-      className={`rounded-full object-cover ${className}`}
-    />
   );
 }

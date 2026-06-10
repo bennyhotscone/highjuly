@@ -3,7 +3,7 @@ export const AGE_GATE_NOTICE =
 
 /** Campaign photography — run `node scripts/process-backgrounds.mjs` to rebuild from assets */
 export const siteImages = {
-  hero: "/backgrounds/bg-rooftop.jpg",
+  hero: "/backgrounds/bg-rooftop-hero.jpg",
   mission: "/backgrounds/bg-kitchen.jpg",
   bandRolling: "/backgrounds/bg-extra-rolling.jpg",
   bandLounge: "/backgrounds/bg-extra-lounge.jpg",
@@ -19,28 +19,20 @@ export const storeImages = {
 export const brandLogos = {
   primary: "/backgrounds/logo-primary.png",
   bong: "/backgrounds/logo-bong.png",
-  pill: "/backgrounds/logo-pill.png",
+  pipe: "/backgrounds/logo-pipe.png",
   joint: "/backgrounds/logo-joint.png",
+  blunt: "/backgrounds/logo-blunt.png",
+  mushroom: "/backgrounds/logo-mushroom.png",
+  munchies: "/backgrounds/logo-munchies.png",
+  pineapple: "/backgrounds/logo-pineapple.png",
+  pizza: "/backgrounds/logo-pizza.png",
+  sleep: "/backgrounds/logo-sleep.png",
+  pill: "/backgrounds/logo-pill.png",
   icon: "/backgrounds/logo-icon.png",
 } as const;
 
-/** Scalable SVG exports for press downloads */
-export const brandLogoSvgs = {
-  primary: "/backgrounds/logo-primary.svg",
-  bong: "/backgrounds/logo-bong.svg",
-  pill: "/backgrounds/logo-pill.svg",
-  joint: "/backgrounds/logo-joint.svg",
-  icon: "/backgrounds/logo-icon.svg",
-} as const;
-
-/** Raster exports for downloads and social previews */
-export const brandLogoDownloads = {
-  primary: "/backgrounds/logo-primary.png",
-  bong: "/backgrounds/logo-bong.png",
-  pill: "/backgrounds/logo-pill.png",
-  joint: "/backgrounds/logo-joint.png",
-  icon: "/backgrounds/logo-icon.png",
-} as const;
+/** Raster exports for downloads */
+export const brandLogoDownloads = brandLogos;
 
 export type LogoVariant = keyof typeof brandLogos;
 
@@ -110,13 +102,13 @@ export const merchProducts = [
     logo: "pill" as const,
   },
   {
-    id: "tote",
-    name: "High July Tote",
+    id: "crop-top",
+    name: "High July Long Sleeve Crop Top",
     description:
-      "Canvas tote bag with screen-printed logo. Reinforced handles.",
+      "Tight long-sleeve crop top with bold HIGH JULY racing-style arm print. Black, unisex fit.",
     status: "coming-soon" as const,
-    image: "/backgrounds/product-tote.jpg",
-    logo: "joint" as const,
+    image: "/backgrounds/product-crop-top.jpg",
+    logo: "mushroom" as const,
   },
   {
     id: "mug",
