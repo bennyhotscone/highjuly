@@ -13,6 +13,7 @@ interface ButtonProps {
   type?: "button" | "submit";
   external?: boolean;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const variants: Record<ButtonVariant, string> = {
@@ -57,8 +58,9 @@ export function Button({
   type = "button",
   external = false,
   fullWidth = false,
+  disabled = false,
 }: ButtonProps) {
-  const combined = `${buttonClassName(variant, size)} ${fullWidth ? "w-full" : ""} ${className}`.trim();
+  const combined = `${buttonClassName(variant, size)} ${fullWidth ? "w-full" : ""} ${disabled ? "pointer-events-none opacity-60" : ""} ${className}`.trim();
 
   if (href) {
     if (external) {
@@ -72,7 +74,7 @@ export function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={combined}>
+    <button type={type} onClick={onClick} className={combined} disabled={disabled}>
       {children}
     </button>
   );

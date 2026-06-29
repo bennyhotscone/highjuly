@@ -6,6 +6,42 @@ import { Button } from "./Button";
 
 export function SignUpPanel() {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState<{ type: "success" | "error"; text: string } | null>(
+    null,
+  );
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setFeedback(null);
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = (await res.json()) as { error?: string; alreadySubscribed?: boolean };
+
+      if (!res.ok) {
+        setFeedback({ type: "error", text: data.error ?? "Something went wrong. Please try again." });
+        return;
+      }
+
+      setFeedback({
+        type: "success",
+        text: data.alreadySubscribed
+          ? "You're already on the list — we'll see you in July."
+          : "You're on the list. Check your inbox to confirm.",
+      });
+      setEmail("");
+    } catch {
+      setFeedback({ type: "error", text: "Network error. Check your connection and try again." });
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="hj-card flex h-full flex-col">
@@ -19,13 +55,7 @@ export function SignUpPanel() {
           Get July updates, merch drops, and supporter links straight to your inbox.
         </p>
 
-        <form
-          className="mt-6 flex flex-1 flex-col"
-          onSubmit={(e) => {
-            e.preventDefault();
-            window.location.href = "/#support";
-          }}
-        >
+        <form className="mt-6 flex flex-1 flex-col" onSubmit={handleSubmit}>
           <label htmlFor="signup-email" className="text-sm font-semibold text-hj-ink">
             Email
           </label>
@@ -33,13 +63,33 @@ export function SignUpPanel() {
             id="signup-email"
             type="email"
             required
+            autoComplete="email"
             placeholder="you@example.com"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-2 w-full rounded-xl border-2 border-hj-border bg-hj-cream px-4 py-3.5 text-base text-hj-ink outline-none transition-all placeholder:text-hj-ink-muted/60 focus:border-hj-green focus:ring-4 focus:ring-hj-green/10"
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (feedback?.type === "error") setFeedback(null);
+            }}
+            disabled={loading}
+            className="mt-2 w-full rounded-xl border-2 border-hj-border bg-hj-cream px-4 py-3.5 text-base text-hj-ink outline-none transition-all placeholder:text-hj-ink-muted/60 focus:border-hj-green focus:ring-4 focus:ring-hj-green/10 disabled:opacity-60"
           />
-          <Button type="submit" variant="yellow" size="lg" fullWidth className="mt-4">
-            Sign up free
+          {feedback ? (
+            <p
+              className={`mt-3 text-sm font-medium ${feedback.type === "success" ? "text-hj-green" : "text-red-700"}`}
+              role="status"
+            >
+              {feedback.text}
+            </p>
+          ) : null}
+          <Button
+            type="submit"
+            variant="yellow"
+            size="lg"
+            fullWidth
+            className="mt-4"
+            disabled={loading}
+          >
+            {loading ? "Signing up…" : "Sign up free"}
           </Button>
         </form>
 

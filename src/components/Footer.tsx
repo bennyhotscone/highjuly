@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AGE_STORAGE_KEY } from "@/lib/age";
+import { shopHref, shopIsExternal } from "@/lib/config";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 
@@ -17,7 +18,13 @@ export function Footer() {
         </div>
         <div className="flex flex-wrap gap-x-12 gap-y-4 text-sm text-white/80">
           <Link href="/#signup" className="hover:text-white">Sign up</Link>
-          <Link href="/merch" className="hover:text-white">Store</Link>
+          {shopIsExternal() ? (
+            <a href={shopHref()} className="hover:text-white" target="_blank" rel="noopener noreferrer">
+              Store
+            </a>
+          ) : (
+            <Link href={shopHref()} className="hover:text-white">Store</Link>
+          )}
           <Link href="/about" className="hover:text-white">About</Link>
           <Link href="/media-pack" className="hover:text-white">Media pack</Link>
           <button

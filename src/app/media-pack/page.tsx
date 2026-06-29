@@ -3,6 +3,7 @@ import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { PageHeader } from "@/components/PageHeader";
 import { brandLogoDownloads, brandLogos, mediaPack } from "@/lib/data";
+import { supportHref, supportIsExternal } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Media Pack",
@@ -121,7 +122,7 @@ export default function MediaPackPage() {
           </div>
         </div>
 
-        <Button href="/#support" className="mt-4">
+        <Button href={supportHref()} className="mt-4" external={supportIsExternal()}>
           Support page
         </Button>
       </Container>

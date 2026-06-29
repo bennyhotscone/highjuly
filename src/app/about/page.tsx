@@ -5,6 +5,7 @@ import { Container } from "@/components/Container";
 import { FullBleedImage } from "@/components/FullBleedImage";
 import { PageHeader } from "@/components/PageHeader";
 import { siteImages } from "@/lib/data";
+import { supportHref, supportIsExternal } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "About",
@@ -44,7 +45,9 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="mt-12 flex flex-wrap gap-4">
-            <Button href="/#support">Support</Button>
+            <Button href={supportHref()} external={supportIsExternal()}>
+              Support
+            </Button>
             <Button href="/media-pack" variant="outline">
               Media pack
             </Button>

@@ -22,9 +22,26 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Push to GitHub and import the repo in [Vercel](https://vercel.com). No extra configuration required.
 
+## Connect sign up, shop & support
+
+Copy `.env.example` to `.env.local` and add your keys. On Vercel, add the same variables under **Project → Settings → Environment Variables**.
+
+| Variable | Purpose |
+|----------|---------|
+| `NEXT_PUBLIC_SITE_URL` | Your live domain (sitemap, social previews) |
+| `NEXT_PUBLIC_SHOPIFY_STORE_URL` | Shopify store URL — Store buttons open checkout |
+| `NEXT_PUBLIC_STRIPE_PAYMENT_LINK` | Stripe Payment Link — “Contribute directly” |
+| `BUTTONDOWN_API_KEY` | [Buttondown](https://buttondown.com) API key for email signups |
+
+**Shopify:** When `NEXT_PUBLIC_SHOPIFY_STORE_URL` is set, navbar Store, product cards marked “In store”, and merch CTAs open your Shopify shop in a new tab.
+
+**Per-product links:** Add an optional `shopUrl` field on any product in `src/lib/data.ts` to link straight to a product page.
+
+**Sign up:** Uses `POST /api/subscribe` → Buttondown. Subscribers get the `high-july-site` tag.
+
 ## Stripe
 
-Replace the placeholder `#` link on the homepage support section with your Stripe Payment Link URL when ready.
+Set `NEXT_PUBLIC_STRIPE_PAYMENT_LINK` to your [Stripe Payment Link](https://dashboard.stripe.com/payment-links). The homepage support section and About page will open it automatically.
 
 ## Age gate
 
