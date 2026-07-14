@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
 import { SiteLayout } from "@/components/SiteLayout";
 import { siteUrl } from "@/lib/site";
@@ -38,6 +39,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col font-body antialiased">
         <SiteLayout>{children}</SiteLayout>
+        <Analytics />
       </body>
     </html>
   );
