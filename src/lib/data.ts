@@ -100,7 +100,7 @@ export const merchProducts = [
     status: "store" as const,
     image: "/backgrounds/product-cap.jpg",
     logo: "pill" as const,
-    shopUrl: "https://shop.highjuly.live/products/high-july-cap",
+    shopUrl: "https://shop.highjuly.live/products/blunt-cap",
   },
   {
     id: "crop-top",
