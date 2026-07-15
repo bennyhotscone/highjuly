@@ -8,6 +8,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SignUpPanel } from "@/components/SignUpPanel";
 import { StorePanel } from "@/components/StorePanel";
 import { merchProducts, siteImages } from "@/lib/data";
+import { shopHref, supportHref } from "@/lib/config";
 
 export default function HomePage() {
   const preview = merchProducts.slice(0, 4);
@@ -44,7 +45,7 @@ export default function HomePage() {
               <Button href="/#signup" variant="yellow" size="xl">
                 Sign up free
               </Button>
-              <Button href="/merch" variant="outline-light" size="xl">
+              <Button href={shopHref()} variant="outline-light" size="xl">
                 Shop the store
               </Button>
             </div>
@@ -117,7 +118,7 @@ export default function HomePage() {
               <p className="hj-label">Merch</p>
               <h2 className="hj-section-title mt-2">Official products</h2>
             </div>
-            <Button href="/merch" variant="primary" size="md">
+            <Button href={shopHref()} variant="primary" size="md">
               View all products
             </Button>
           </div>
@@ -129,6 +130,7 @@ export default function HomePage() {
                 description={p.description}
                 image={p.image}
                 status={p.status}
+                shopUrl={"shopUrl" in p ? p.shopUrl : undefined}
               />
             ))}
           </div>
@@ -158,11 +160,11 @@ export default function HomePage() {
             <Button href="/#signup" variant="yellow" size="xl" className="sm:min-w-[180px]">
               Sign up
             </Button>
-            <Button href="/merch" variant="outline-light" size="xl" className="sm:min-w-[180px]">
+            <Button href={shopHref()} variant="outline-light" size="xl" className="sm:min-w-[180px]">
               Shop store
             </Button>
           </div>
-          <Button href="#" variant="ghost" size="sm" className="mt-8 !text-hj-yellow hover:!bg-white/10">
+          <Button href={supportHref()} variant="ghost" size="sm" className="mt-8 !text-hj-yellow hover:!bg-white/10">
             Contribute directly →
           </Button>
           <p className="mt-4 text-xs text-white/60">

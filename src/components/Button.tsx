@@ -63,9 +63,9 @@ export function Button({
   const combined = `${buttonClassName(variant, size)} ${fullWidth ? "w-full" : ""} ${disabled ? "pointer-events-none opacity-60" : ""} ${className}`.trim();
 
   if (href) {
-    if (external) {
+    if (external || href.startsWith("http") || href.startsWith("//")) {
       return (
-        <a href={href} className={combined} target="_blank" rel="noopener noreferrer">
+        <a href={href} className={combined}>
           {children}
         </a>
       );

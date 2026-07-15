@@ -100,6 +100,7 @@ export const merchProducts = [
     status: "store" as const,
     image: "/backgrounds/product-cap.jpg",
     logo: "pill" as const,
+    shopUrl: "https://shop.highjuly.live/products/high-july-cap",
   },
   {
     id: "crop-top",
@@ -124,7 +125,7 @@ export const merchProducts = [
     name: "High July Poster",
     description:
       "Limited-run campaign poster. A2 size, suitable for framing.",
-    status: "store" as const,
+    status: "coming-soon" as const,
     image: "/backgrounds/product-poster.jpg",
     logo: "pill" as const,
   },

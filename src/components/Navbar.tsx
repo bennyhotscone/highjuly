@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
-import { shopHref, shopIsExternal } from "@/lib/config";
+import { shopHref } from "@/lib/config";
 import { Container } from "./Container";
 
 const links = [
@@ -73,7 +73,6 @@ export function Navbar() {
               href={shopHref()}
               variant={onHero ? "outline-light" : "outline"}
               size="sm"
-              external={shopIsExternal()}
             >
               Store
             </Button>
@@ -112,7 +111,7 @@ export function Navbar() {
             <Button href="/#signup" variant="yellow" size="md" fullWidth>
               Sign up
             </Button>
-            <Button href={shopHref()} variant="outline" size="md" fullWidth external={shopIsExternal()}>
+            <Button href={shopHref()} variant="outline" size="md" fullWidth>
               Store
             </Button>
           </div>

@@ -1,4 +1,5 @@
 import { CampaignImage } from "@/components/CampaignImage";
+import { getProductHref, productLinkIsExternal, shopHref } from "@/lib/config";
 import Link from "next/link";
 import { merchProducts, storeImages } from "@/lib/data";
 import { Button } from "./Button";
@@ -28,23 +29,44 @@ export function StorePanel() {
         </p>
 
         <div className="mt-5 grid grid-cols-3 gap-2.5">
-          {featured.map((product) => (
-            <Link
-              key={product.id}
-              href="/merch"
-              className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-hj-cream-dark ring-1 ring-black/5"
-            >
+          {featured.map((product) => {
+            const href = getProductHref(product);
+            const thumbClass =
+              "group relative aspect-[3/4] overflow-hidden rounded-xl bg-hj-cream-dark ring-1 ring-black/5";
+            const image = (
               <CampaignImage
                 src={product.image}
                 alt={product.name}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className={`object-cover ${href ? "transition-transform duration-500 group-hover:scale-105" : ""}`}
               />
-            </Link>
-          ))}
+            );
+
+            if (!href) {
+              return (
+                <div key={product.id} className={thumbClass}>
+                  {image}
+                </div>
+              );
+            }
+
+            if (productLinkIsExternal(product)) {
+              return (
+                <a key={product.id} href={href} className={thumbClass}>
+                  {image}
+                </a>
+              );
+            }
+
+            return (
+              <Link key={product.id} href={href} className={thumbClass}>
+                {image}
+              </Link>
+            );
+          })}
         </div>
 
-        <Button href="/merch" variant="primary" size="lg" fullWidth className="mt-6">
+        <Button href={shopHref()} variant="primary" size="lg" fullWidth className="mt-6">
           Browse all products
         </Button>
 

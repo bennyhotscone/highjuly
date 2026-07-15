@@ -1,16 +1,18 @@
 /** Public config — safe for client components (NEXT_PUBLIC_* only). */
+export const SHOPIFY_STORE_URL = "https://shop.highjuly.live";
+
 export const publicConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.highjuly.com",
-  shopifyStoreUrl: process.env.NEXT_PUBLIC_SHOPIFY_STORE_URL ?? "",
+  shopifyStoreUrl: process.env.NEXT_PUBLIC_SHOPIFY_STORE_URL || SHOPIFY_STORE_URL,
   stripePaymentLink: process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK ?? "",
 } as const;
 
 export function shopHref(): string {
-  return publicConfig.shopifyStoreUrl || "/merch";
+  return publicConfig.shopifyStoreUrl;
 }
 
 export function shopIsExternal(): boolean {
-  return Boolean(publicConfig.shopifyStoreUrl);
+  return shopHref().startsWith("http");
 }
 
 export function supportHref(): string {
@@ -26,18 +28,14 @@ export type MerchProductLike = {
   shopUrl?: string;
 };
 
+/** Only products with an explicit shopUrl are buyable links. */
 export function getProductShopUrl(product: MerchProductLike): string | null {
   if (product.status !== "store") return null;
-  if (product.shopUrl) return product.shopUrl;
-  if (publicConfig.shopifyStoreUrl) return publicConfig.shopifyStoreUrl;
-  return null;
+  return product.shopUrl || null;
 }
 
-export function getProductHref(product: MerchProductLike): string {
-  const shopUrl = getProductShopUrl(product);
-  if (shopUrl) return shopUrl;
-  if (product.status === "coming-soon") return "/#signup";
-  return "/merch";
+export function getProductHref(product: MerchProductLike): string | null {
+  return getProductShopUrl(product);
 }
 
 export function productLinkIsExternal(product: MerchProductLike): boolean {
@@ -46,7 +44,6 @@ export function productLinkIsExternal(product: MerchProductLike): boolean {
 }
 
 export function productCta(product: MerchProductLike): string {
-  if (getProductShopUrl(product)) return "Shop now →";
-  if (product.status === "coming-soon") return "Get drop alerts →";
-  return "View product →";
+  if (getProductShopUrl(product)) return "View product →";
+  return "Coming soon";
 }
